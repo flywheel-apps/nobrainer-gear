@@ -1,0 +1,51 @@
+{
+  "name": "nobrainer",
+  "label": "Nobrainer",
+  "description": "A framework for developing neural network models for 3D image processing.",
+  "author": "Flywheel",
+  "maintainer": "Flywheel <support@flywheel.io>",
+  "license": "Other",
+  "url": "https://github.com/flywheel-apps/nobrainer",
+  "source": "https://github.com/neuronets/nobrainer",
+  "cite": "",
+  "version": "0.0.1",
+  "custom": {
+    "docker-image": "flywheel/nobrainer:0.0.1",
+    "gear-builder": {
+      "category": "analysis",
+      "image": "flywheel/nobrainer:0.0.1"
+    }
+  },
+  "inputs": {
+    "T1W": {
+      "base": "file",
+      "description": "T1-Weighted Image",
+      "optional": false,
+      "type": {
+        "enum": [
+          "nifti"
+        ]
+      }
+    },
+    "HDF5-Model": {
+      "base": "file",
+      "description": "nobrainer HDF5 Model, defaults to internally stored model.",
+      "optional": true
+    }
+  },
+  "config": {
+    "largest-label": {
+      "default": false,
+      "description": "Zero out all values not connected to the largest contiguous label (not including 0 values). This remove false positives in binary prediction.",
+      "type": "boolean"
+    },
+    "threshold": {
+      "default": 0.3,
+      "description": "Threshold used to binarize model output. Only used in binary prediction and must be in (0, 1).",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "type": "number"
+    }
+  },
+  "command": "/flywheel/v0/run.py"
+}
