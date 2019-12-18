@@ -1,7 +1,9 @@
 # Dockerfile exported by GearBuilderGUI. Stash edits before export again
 
 # Inheriting from established docker image:
-FROM kaczmarj/nobrainer:latest
+# "latest" tags are inherently unstable
+# FROM kaczmarj/nobrainer:latest-gpu
+FROM kaczmarj/nobrainer@sha256:66d92dc00170b43c6d2f2cfc65e8c33241717c9ccd5e3cd36703574c14339c12
 
 # Inheriting from established docker image:
 LABEL maintainer="Flywheel <support@flywheel.io>"
@@ -20,11 +22,6 @@ RUN pip3 install --upgrade pip && \
     flywheel-sdk && \ 
     rm -rf /root/.cache/pip
 
-# Specify ENV Variables
-ENV \ 
-    PATH=$PATH  \ 
-    LD_LIBRARY_PATH=$LD_LIBRARY_PATH 
-
 # Make directory for flywheel spec (v0):
 ENV FLYWHEEL /flywheel/v0
 WORKDIR ${FLYWHEEL}
@@ -34,6 +31,7 @@ RUN mkdir ${FLYWHEEL}/model && \
     cd ${FLYWHEEL}/model && \
     wget -nd https://github.com/neuronets/nobrainer-models/releases/download/0.1/brain-extraction-unet-128iso-model.h5 && \
     cd /
+
 # Copy executable/manifest to Gear
 COPY utils ${FLYWHEEL}/utils
 COPY run.py ${FLYWHEEL}/run.py

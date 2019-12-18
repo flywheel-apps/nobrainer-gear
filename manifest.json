@@ -5,15 +5,15 @@
   "author": "Flywheel",
   "maintainer": "Flywheel <support@flywheel.io>",
   "license": "Other",
-  "url": "https://github.com/flywheel-apps/nobrainer",
+  "url": "https://github.com/flywheel-apps/nobrainer-gear",
   "source": "https://github.com/neuronets/nobrainer",
   "cite": "",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "custom": {
-    "docker-image": "flywheel/nobrainer:0.0.1",
+    "docker-image": "flywheel/nobrainer:0.1.0",
     "gear-builder": {
       "category": "analysis",
-      "image": "flywheel/nobrainer:0.0.1"
+      "image": "flywheel/nobrainer:0.1.0"
     }
   },
   "inputs": {
@@ -45,6 +45,11 @@
       "minimum": 0.0,
       "maximum": 1.0,
       "type": "number"
+    },
+    "rotate-and-predict":{
+        "type": "boolean",
+        "default": false,
+        "description": "Average the prediction with a prediction on a rotated (and subsequently un-rotated) volume. This can produce a better overall prediction with the expense of more time."
     }
   },
   "command": "/flywheel/v0/run.py"
