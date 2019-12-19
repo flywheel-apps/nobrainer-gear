@@ -20,7 +20,17 @@ if __name__ == '__main__':
     context.config['dry-run'] = False
     gear_preliminaries.initialize_gear(context)
 
-    # Build, Validate, and execute Parameters Hello World 
+    # Validate against configuration
+    try:
+        gear_preliminaries.validate_config_against_manifest(context)
+    except Exception as e:
+        context.log.exception(e)
+        context.log.fatal(
+            'Please make the prescribed corrections and try again.'
+        )
+        os.sys.exit(1)
+
+    # Build, Validate, and execute Parameters
     try:
         args.build(context)
         args.validate(context)
@@ -28,14 +38,8 @@ if __name__ == '__main__':
 
     except Exception as e:
         context.log.fatal(e,)
-        context.log.fatal(
-            'Error executing nobrainer.',
-        )
+        context.log.fatal('Error executing nobrainer.')
         os.sys.exit(1)
-    
-    outputs = glob.glob(op.join(context.work_dir,"*.gz"))
-    for fl in outputs:
-        shutil.move(fl, context.output_dir)
-    
+
     context.log.info("nobrainer completed Successfully!")
     os.sys.exit(0)

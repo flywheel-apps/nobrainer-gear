@@ -27,9 +27,9 @@
         ]
       }
     },
-    "HDF5-Model": {
+    "model": {
       "base": "file",
-      "description": "nobrainer HDF5 Model, defaults to internally stored model.",
+      "description": "nobrainer HDF5 Model, defaults to internally stored model. The default model is found at https://github.com/neuronets/nobrainer-models.",
       "optional": true
     }
   },
