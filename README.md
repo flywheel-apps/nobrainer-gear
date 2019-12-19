@@ -13,8 +13,8 @@ The default embedded models perform predictive masking of the brain in an MRI. C
 
 ## Optional inputs
 
-1. **HDF5-Model**
-    * nobrainer HDF5 Model, defaults to internally stored model.
+1. **model**
+    * nobrainer HDF5 Model, defaults to internally stored model. The default model is found at [https://github.com/neuronets/nobrainer-models](https://github.com/neuronets/nobrainer-models). Other models may be available from the implementors.
 
 ## Configuration options
 
