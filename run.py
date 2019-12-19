@@ -3,7 +3,6 @@ import os, os.path as op
 import json
 import subprocess as sp
 import copy
-import shutil
 import glob
 import logging
 

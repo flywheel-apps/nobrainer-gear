@@ -1,4 +1,5 @@
 import os, os.path as op
+import shutil
 from collections import OrderedDict
 from .common import build_command_list, exec_command
 
@@ -35,6 +36,10 @@ def validate(context):
         raise FileNotFoundError('Model not found!!!')
 
 def execute(context):
+
+    # ensure output file is not present:
+    if op.exists(op.join(context.output_dir,'brainmask.nii.gz')):
+        os.remove(op.join(context.output_dir,'brainmask.nii.gz'))
     inputs = context._invocation['inputs']
     command = ['nobrainer', 'predict']
     command = build_command_list(command, context.gear_dict['params'])
