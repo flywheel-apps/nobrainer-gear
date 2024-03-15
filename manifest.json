@@ -14,6 +14,28 @@
     "gear-builder": {
       "category": "analysis",
       "image": "flywheel/nobrainer:0.1.0"
+    },
+    "flywheel": {
+      "classification": {
+        "species": [
+          "Human"
+        ],
+        "organ": [
+          "Brain"
+        ],
+        "therapeutic_area": [
+          "Neurology",
+          "Psychiatry/Psychology"
+        ],
+        "modality": [
+          "MR"
+        ],
+        "function": [
+          "Image Processing - Segmentation",
+          "Image Processing - Structural"
+        ]
+      },
+      "suite": "Image Processing"
     }
   },
   "inputs": {
@@ -46,10 +68,10 @@
       "maximum": 1.0,
       "type": "number"
     },
-    "rotate-and-predict":{
-        "type": "boolean",
-        "default": false,
-        "description": "Average the prediction with a prediction on a rotated (and subsequently un-rotated) volume. This can produce a better overall prediction with the expense of more time."
+    "rotate-and-predict": {
+      "type": "boolean",
+      "default": false,
+      "description": "Average the prediction with a prediction on a rotated (and subsequently un-rotated) volume. This can produce a better overall prediction with the expense of more time."
     }
   },
   "command": "/flywheel/v0/run.py"
