@@ -1,3 +1,5 @@
+> [!WARNING]
+> This repo has moved to [https://gitlab.com/flywheel-io/scientific-solutions/gears/github/nobrainer-gear](https://gitlab.com/flywheel-io/scientific-solutions/gears/github/nobrainer-gear)
 # nobrainer-gear
 
 This is a [Flywheel Gear](https://github.com/flywheel-io/gears/tree/master/spec) that wraps the [Nobrainer](https://github.com/neuronets/nobrainer) application for 3D image processing.
